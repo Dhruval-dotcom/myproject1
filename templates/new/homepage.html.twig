@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} hello | {{ parent() }} {% endblock %}
+
+{% block body %}
+
+<h1>{{ title }}</h1>
+
+{# TODO: comments here #}
+
+<div>
+    Hello in homepage
+</div>
+
+<h3>{{ smalltitle }}</h3>
+
+<div>
+    tracks:
+        {{ dump(arr) }}
+        {{ dump() }}
+    <ul>
+
+        {% for track in tracks %}
+
+            <li>
+                {{ track }}
+            </li>
+
+        {% endfor %}
+    </ul>
+
+</div>
+
+
+<div>
+    arr:
+
+    <ul>
+
+        {% for val in arr %}
+
+            <li>
+                {{ val.a }} ===> {{ val.b }}
+            </li>
+
+        {% endfor %}
+    </ul>
+    
+</div>
+
+<a href="{{ path('app') }}">Here is link</a>
+
+<a href="{{ path('app_new', {
+    slug: 'pop'
+}) }}">Here is link for slug</a>
+
+<a href="{{ path('app_new', {
+    slug: 'pop2'
+}) }}">Here is link for slug</a>
+
+<a href="{{ path('app_new', {
+    slug: 'pop3'
+}) }}">Here is link for slug</a>
+
+
+{% endblock %}
