@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{# 
+{% block body %}
+	<h1>{{ mix.title }}</h1>
+{% endblock %} #}
+
+{% block body %}
+	<div class="container">
+		<h1 class="d-inline me-3">{{ mix.title }}</h1>
+		<div class="row mt-5">
+
+			<div class="col-12 col-md-4"></div>
+			{{ include('mix/_record.html.twig') }}
+
+			<h2 class="mb-4">{{ mix.trackCount }}
+				songs
+				<small>(genre:
+					{{ mix.genre }})</small>
+			</h2> 
+			<p>{{ mix.description }}</p>
+
+			<p>{{ mix.votesString }}
+				votes</p>
+
+			<form action="{{ path('app_mix_vote', {id: mix.id }) }}" method="POST">
+				<button 
+					type="submit" 
+					name="direction"
+					value="up"
+					class="btn btn-outline-primary">
+					<span class="fa fa-thumbs-up"></span>
+				</button>
+				<button 
+					type="submit" 
+					name="direction"
+					value="down"
+					class="btn btn-outline-primary">
+					<span class="fa fa-thumbs-down"></span>
+				</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

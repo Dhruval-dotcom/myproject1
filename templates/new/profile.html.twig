@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{{ title }}
+
+    <ul>
+        {% for val in mixes %}
+            <li> <h5> {{ val.title }} </h5> </li>
+            <ul>
+                <li> {{ val.trackCount }} </li>
+                <li> {{ val.genre }} </li>
+                <li> {{ val.createdAt | date }} </li>
+                <li> {{ val.votesString }} votes </li>
+                <li> <a href="{{ path('singleid',{
+                    id: val.id
+                } ) }}"> visit </a> </li>
+            </ul>
+            <br>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
