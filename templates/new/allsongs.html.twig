@@ -3,10 +3,7 @@
 {% block body %}
 	<center><h2 class="song-title">{{ title }}</h2></center>
 
-    
-        {# <turbo-frame id="mix-browse-list-{{ pager.currentPage }}"> #}
-        
-            {% for val in pager %}
+       {% for val in pager %}
             <div class="pager">
                 <center><h3 class="song-heading"> {{ val.title }} </h3></center> 
                     <table>
@@ -35,10 +32,12 @@
                             <td>{{ val.approvedAns|length }}</td>
                         </tr>
                     </table> 
-
-                    {# {% for tag in val.mixTag %}
-                        #{{tag.tag.name}} 
-                    {% endfor %} #}
+                     
+                    <div style="display:flex">
+                        {% for tag in val.mixTags %}
+                            <span class="tagname">#{{tag.tag.name}} </span>
+                        {% endfor %}
+                    </div>
                     <center><a class="btn btn-primary" href="{{ path('singleid',{
                         slug: val.slug
                         } ) }}"> visit here </a></center>
@@ -46,17 +45,6 @@
                 <br>
             </div>
             {% endfor %}
-           
 
-            {% if pager.hasNextPage %}
-                <turbo-frame 
-                id="mix-browse-list-{{ pager.nextPage }}"
-                src="{{ pagerfanta_page_url(pager, pager.nextPage) }}"
-                loading="lazy"></turbo-frame>
-            {% endif %}
-        {# </turbo-frame> #}
-    
-{# {{ pagerfanta(pager) }} #}
-
-    
+            {{ pagerfanta(pager) }}
 {% endblock %}

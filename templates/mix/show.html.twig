@@ -5,39 +5,60 @@
 {% endblock %} #}
 
 {% block body %}
-	<div class="container">
-		<h1 class="d-inline me-3">{{ mix.title }}</h1>
-		<div class="row mt-5">
+	<div class="container song">
+		<center>
+			<h1 class="d-inline me-3">{{ mix.title }}</h1>
+		</center>
 
-			<div class="col-12 col-md-4"></div>
-			{{ include('mix/_record.html.twig') }}
+		<div class="row mt-5">
+			<div class="mb-4">{{ include('mix/_record.html.twig') }}</div>
 
 			<h2 class="mb-4">{{ mix.trackCount }}
 				songs
 				<small>(genre:
 					{{ mix.genre }})</small>
-			</h2> 
+			</h2>
 			<p>{{ mix.description }}</p>
 
 			<p>{{ mix.votesString }}
 				votes</p>
 
+			<div style="display:flex">
+				{% for tag in mix.MixTags %}
+					<span class="tagname">	#{{tag.tag.name}}</span>
+				{% endfor %}
+			</div>
+			
 			<form action="{{ path('app_mix_vote', {id: mix.id }) }}" method="POST">
-				<button 
-					type="submit" 
-					name="direction"
-					value="up"
-					class="btn btn-outline-primary">
+				<button type="submit" name="direction" value="up" class="like-icon">
 					<span class="fa fa-thumbs-up"></span>
 				</button>
-				<button 
-					type="submit" 
-					name="direction"
-					value="down"
-					class="btn btn-outline-primary">
+				<button type="submit" name="direction" value="down" class="like-icon">
 					<span class="fa fa-thumbs-down"></span>
 				</button>
 			</form>
 		</div>
 	</div>
+	<br><br>
+	<h4>Comment Answers ({{answer|length}})</h4>
+	<ul>
+		{% for val in answer %}
+			<right><small class="comment-ago">{{ val.createdAt|ago }}</small></right>
+			<li>{{val.Description}}
+			</li>
+			<br>
+			<span class="vote">
+				<button class="vote-button">
+					<span class="fa fa-arrow-up vote-icon"></span>
+				</button>
+				<button class="vote-button">
+					<span class="fa fa-arrow-down vote-icon"></span>
+				</button>
+				{{val.votes}}
+				votes
+			</span>
+			<br><br><br>
+		{% endfor %}
+	</ul>
+
 {% endblock %}

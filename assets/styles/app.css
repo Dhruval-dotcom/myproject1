@@ -1,11 +1,65 @@
-@import '~bootstrap';
-@import '~font-awesome';
-*{
-    color: white;
+@import "~bootstrap";
+@import "~font-awesome";
+* {
+  color: black;
+  font-family: "JetBrains Mono", ui-monospace, "Roboto Mono", SFMono-Regular, Menlo, Monaco, Consolas,"Liberation Mono", "Courier New", monospace;
 }
 body {
-    background-color: maroon;
+  background-color: rgb(255, 239, 239);
 }
-#carouselExampleCaptions{
-    width: 600px;
+#carouselExampleCaptions {
+  width: 600px;
+}
+
+.vote{
+  border-radius: 5px;
+  padding: 6px;
+  background-color: #0d6efd;
+  color: white;
+}
+
+.like-icon{
+  border-radius: 5px;
+  padding: 5px 9px;
+  background-color: #0d6efd;
+  border: none;
+}
+.like-icon span{
+  color: white;
+}
+.vote-button{
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.song{
+  border: 25px solid green;
+  padding: 10px 20px;
+}
+.pager{
+  border: 14px solid green;
+  padding: 10px 20px;
+  margin: 8px;
+  width: 500px;
+}
+.song-heading, .comment-ago{
+  color: rgb(0, 250, 46);
+}
+.No-Answer{
+  padding-right: 20px;
+}
+.vote-icon{
+  color: white;
+}
+.tagname{
+  background-color: white;
+  border-radius: 20px;
+  padding: 4px 9px;
+  margin: 4px 3px;
+  color: rgb(38, 100, 245);
+  box-shadow: 5px 10px 8px #888888a9;
+}
+span{
+  display: flex;
 }

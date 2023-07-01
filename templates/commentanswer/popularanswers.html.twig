@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Popular Answers
+{% endblock %}
+
+
+{% block body %}
+
+    <form action="{{ path('popularanswers') }}">
+        <input 
+        type="search" 
+        name="q" 
+        value="{{ app.request.query.get('q') }}" 
+        class="form-control" 
+        placeholder="Search..." 
+        aria-label="Search">
+    </form>
+
+    <br><br>
+	<h4>Popular Answers ({{answer|length}})</h4>
+	<ul>
+		{% for val in answer %}
+			<a href="{{ path('singleid',{ slug: val.question.slug } ) }}">
+				{{ val.questionText|u.truncate(14, '...')}}
+			</a>
+
+			<right>
+				<small class="comment-ago">{{ val.createdAt|ago }}</small>
+			</right>
+			<li>{{val.Description}}
+			</li>
+			<br>
+			<span class="vote">
+				<button class="vote-button">
+					<span class="fa fa-arrow-up vote-icon"></span>
+				</button>
+				<button class="vote-button">
+					<span class="fa fa-arrow-down vote-icon"></span>
+				</button>
+				{{val.votes}}
+				votes
+			</span>
+			<br><br><br>
+		{% endfor %}
+	</ul>
+{% endblock %}
